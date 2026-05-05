@@ -1,1 +1,105 @@
- 
+* { /* reset básico */
+    box-sizing: border-box; /* para padding y border ya incluidos en cada ventana*/
+    margin: 0; /* sin márgenes externos por defecto */
+    padding: 0; /* sin relleno interno por defecto */
+}
+
+body {
+    font-family: Arial, sans-serif; /* arial. Si no, sans-serif*/
+    display: flex; /* flexbox activado */
+    flex-direction: column; /* elementos apilados verticalmente */
+    min-height: 100vh; /* ocupar como mínimo el 100% de la altura visible */
+}
+
+header {
+    background-color: #2c3e50; 
+    color: white; 
+    padding: 1rem 2rem; /* 1 rem de padding superior e inferior, 2rem a los lados */
+    display: flex; /* Usa Flexbox para distribuir elementos horizontalmente */
+    justify-content: space-between; /* Distribuye items: logo a un lado, menú al otro */
+    align-items: center; /* Centra los items verticalmente */
+}
+
+/* Estilos para las listas no ordenadas dentro del <nav> del header */
+header nav ul {
+    list-style: none; /* Elimina los puntos de viñeta de la lista */
+    display: flex; /* Coloca los items en fila (horizontalmente) */
+    gap: 1.5rem; /* Espacio de 1.5rem entre cada elemento de menú */
+}
+
+/* Estilos para los enlaces dentro del nav del header */
+header nav a {
+    color: white; /* Color del texto del enlace: blanco */
+    text-decoration: none; /* Elimina el subrayado de los enlaces */
+    font-weight: bold; /* Texto en negrita */
+}
+
+/* ESTRUCTURA CENTRAL: Menú lateral + Contenido principal */
+.contenedor-principal {
+    display: flex; /* Usa Flexbox para distribuir el menú lateral y contenido */
+    flex: 1; /* Ocupa todo el espacio disponible (entre header y footer) */
+    flex-direction: column; /* En móviles, los elementos van uno debajo de otro (vertical) */
+}
+
+/* MENÚ LATERAL - Estilos para el elemento <aside> (barra lateral) */
+aside {
+    background-color: #ecf0f1; /* Color de fondo: gris claro */
+    padding: 1.5rem; /* Relleno interno: 1.5rem en todos los lados */
+    border-right: 1px solid #bdc3c7; /* Borde derecho: línea gris de 1px */
+}
+
+/* Listas dentro del menú lateral */
+aside ul {
+    list-style: none; /* Elimina los puntos de viñeta */
+}
+
+/* Elementos de lista dentro del menú lateral */
+aside ul li {
+    margin-bottom: 0.5rem; /* Espaciado inferior entre items del menú */
+}
+
+/* ZONA CENTRAL DE CONTENIDO - Estilos para el elemento <main> */
+main {
+    flex: 1; /* Ocupa todo el espacio disponible (crece para llenar la página) */
+    padding: 2rem; /* Relleno interno: 2rem en todos los lados */
+    background-color: #ffffff; /* Color de fondo: blanco */
+}
+
+/* PIE DE PÁGINA - Estilos para el elemento <footer> */
+footer {
+    background-color: #34495e; /* Color de fondo: azul oscuro (más oscuro que header) */
+    color: white; /* Color del texto: blanco */
+    text-align: center; /* Centra el texto horizontalmente */
+    padding: 1.5rem; /* Relleno interno: 1.5rem en todos los lados */
+    margin-top: auto; /* Empuja el footer al final de la página (gracias a flexbox en body) */
+}
+
+/* Enlaces dentro del footer */
+footer a {
+    color: #3498db; /* Color del enlace: azul claro */
+    text-decoration: none; /* Elimina el subrayado del enlace */
+}
+
+/* DISEÑO ADAPTABLE - Estilos para tablets y pantallas grandes (768px o más) */
+@media (min-width: 768px) {
+    /* En pantallas grandes, el contenedor principal coloca items lado a lado */
+    .contenedor-principal {
+        flex-direction: row; /* Cambia de vertical a horizontal: menú lateral + contenido lado a lado */
+    }
+    
+    /* En pantallas grandes, el menú lateral tiene ancho fijo */
+    aside {
+        width: 250px; /* Ancho fijo: 250 píxeles para el menú lateral */
+    }
+}
+
+/* Botón de descarga - Estilos para la clase .btn-descarga */
+.btn-descarga {
+    display: inline-block; /* Se muestra como bloque pero respeta el flujo de texto */
+    background-color: #e74c3c; /* Color de fondo: rojo */
+    color: white; /* Color del texto: blanco */
+    padding: 10px 20px; /* Relleno: 10px arriba/abajo, 20px izquierda/derecha */
+    text-decoration: none; /* Elimina el subrayado del enlace */
+    border-radius: 5px; /* Esquinas redondeadas: 5 píxeles de radio */
+    margin-bottom: 2rem; /* Espaciado inferior: 2rem */
+}
