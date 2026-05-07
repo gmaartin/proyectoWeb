@@ -6,9 +6,9 @@
         <h2 class="titulo_evento">Introducción a React y APIs</h2>
         
         <div class="info_tecnica">
-            <p>🗓️ <strong>Horario:</strong> 10:00 - 12:00</p>
-            <p>📍 <strong>Sala:</strong> Turing</p>
-            <p>👥 <strong>Plazas disponibles:</strong> 25</p>
+            <p> <strong>Horario:</strong> 10:00 - 12:00</p>
+            <p> <strong>Sala:</strong> Turing</p>
+            <p> <strong>Plazas disponibles:</strong> 25</p>
         </div>
 
         <div class="descripcion_evento">

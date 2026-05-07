@@ -11,7 +11,7 @@
             <ul>
                 <li><strong>Guillermo Martín Sánchez:</strong> Estructura Base, Estilos y Vista Pública.</li>
                 <li><strong>Javier Rivera Delgado:</strong> Requisitos Dinámicos y Sesiones.</li>
-                <li><strong>Guillermo Martín Sánchez:</strong> Base de Datos y Gestión de Eventos.</li>
+                <li><strong>Diego Romero Fuentes:</strong> Base de Datos y Gestión de Eventos.</li>
             </ul>
         </div>
 

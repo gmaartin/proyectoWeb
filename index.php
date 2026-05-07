@@ -19,8 +19,15 @@
         
         <article class="evento-card" style="border: 1px solid #ccc; padding: 1rem; margin-bottom: 1rem;">
             <h3>Seguridad en Servidores Linux</h3>
-            <p><strong>Horario:</strong> 12:30 - 14:00 | <strong>Sala:</strong> Lovelace</p>
+            <p><strong>Horario:</strong> 12:30 - 14:00 | <strong>Sala:</strong> 12</p>
             <p>Taller práctico sobre fortificación de servidores.</p>
+            <a href="detalle_evento.php?id=2">Ver detalles del taller</a>
+        </article>
+
+        <article class="evento-card" style="border: 1px solid #ccc; padding: 1rem; margin-bottom: 1rem;">
+            <h3>Charla IoT definitiva</h3>
+            <p><strong>Horario:</strong> 16:00 - 18:00 | <strong>Sala:</strong> Salon Conferencias ETSIIT</p>
+            <p>Charla detallada sobre el Internet de las Cosas (IoT).</p>
             <a href="detalle_evento.php?id=2">Ver detalles del taller</a>
         </article>
     </section>
