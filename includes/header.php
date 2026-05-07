@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TechConf - Gestor de Eventos</title>
-    <!-- Enlace al CSS separado como exige el guion -->
     <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
@@ -16,8 +15,8 @@
             <ul>
                 <li><a href="index.php">Agenda</a></li>
                 <li><a href="contacto.php">Contacto</a></li>
-                <!-- Aquí la Persona 2 añadirá el usuario y cerrar sesión -->
+                <!-- JAVI añade el usuario y cerrar sesión -->
             </ul>
         </nav>
     </header>
-    <div class="contenedor-principal"> 
+    <div class="contenedor_principal">  <!-- apertura del contenedor principal -->

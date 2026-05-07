@@ -15,91 +15,191 @@ header {
     background-color: #2c3e50; 
     color: white; 
     padding: 1rem 2rem; /* 1 rem de padding superior e inferior, 2rem a los lados */
-    display: flex; /* Usa Flexbox para distribuir elementos horizontalmente */
-    justify-content: space-between; /* Distribuye items: logo a un lado, menú al otro */
-    align-items: center; /* Centra los items verticalmente */
+    display: flex; 
+    justify-content: space-between; /* para que se quede el logo a la izqueirda y el menú a la derecha */
+    align-items: center; /* para que el menú y el logo esten centrados verticalmente */
 }
 
-/* Estilos para las listas no ordenadas dentro del <nav> del header */
-header nav ul {
-    list-style: none; /* Elimina los puntos de viñeta de la lista */
-    display: flex; /* Coloca los items en fila (horizontalmente) */
-    gap: 1.5rem; /* Espacio de 1.5rem entre cada elemento de menú */
+header nav ul { /* estilos del menu */
+    list-style: none; /* sin puntos de viñeta */
+    display: flex; /* elementos en fila */
+    gap: 1.5rem; /* 1.5rem entre cada elemento */
 }
 
-/* Estilos para los enlaces dentro del nav del header */
-header nav a {
-    color: white; /* Color del texto del enlace: blanco */
-    text-decoration: none; /* Elimina el subrayado de los enlaces */
-    font-weight: bold; /* Texto en negrita */
+header nav a { /* estilos de enlaces dentro del nav */
+    color: white; 
+    text-decoration: none; /* sin subrayado en los enlaces */
+    font-weight: bold; /* negrita */
 }
 
-/* ESTRUCTURA CENTRAL: Menú lateral + Contenido principal */
-.contenedor-principal {
-    display: flex; /* Usa Flexbox para distribuir el menú lateral y contenido */
-    flex: 1; /* Ocupa todo el espacio disponible (entre header y footer) */
-    flex-direction: column; /* En móviles, los elementos van uno debajo de otro (vertical) */
+.contenedor_principal {
+    display: flex; 
+    flex: 1; /* ocupar todo el espacio entre header y footer */
+    flex-direction: column; /* elementos apilados verticalmente en pantallas pequeñas */
 }
 
-/* MENÚ LATERAL - Estilos para el elemento <aside> (barra lateral) */
-aside {
-    background-color: #ecf0f1; /* Color de fondo: gris claro */
-    padding: 1.5rem; /* Relleno interno: 1.5rem en todos los lados */
-    border-right: 1px solid #bdc3c7; /* Borde derecho: línea gris de 1px */
+aside { /* menu lateral */
+    background-color: #ecf0f1; 
+    padding: 1.5rem; 
+    border-right: 1px solid #bdc3c7; /* línea gris en el borde derecho */
 }
 
-/* Listas dentro del menú lateral */
 aside ul {
-    list-style: none; /* Elimina los puntos de viñeta */
+    list-style: none; /* sin puntos de viñeta */
 }
 
-/* Elementos de lista dentro del menú lateral */
-aside ul li {
-    margin-bottom: 0.5rem; /* Espaciado inferior entre items del menú */
+aside ul li { /* para los elementos de la lista*/
+    margin-bottom: 0.5rem; /* espacio inferior entre items del menú */
 }
 
-/* ZONA CENTRAL DE CONTENIDO - Estilos para el elemento <main> */
 main {
-    flex: 1; /* Ocupa todo el espacio disponible (crece para llenar la página) */
-    padding: 2rem; /* Relleno interno: 2rem en todos los lados */
-    background-color: #ffffff; /* Color de fondo: blanco */
+    flex: 1; /* ocupar todo el espacio disponible */
+    padding: 2rem; 
+    background-color: #ffffff; 
 }
 
-/* PIE DE PÁGINA - Estilos para el elemento <footer> */
 footer {
-    background-color: #34495e; /* Color de fondo: azul oscuro (más oscuro que header) */
-    color: white; /* Color del texto: blanco */
-    text-align: center; /* Centra el texto horizontalmente */
-    padding: 1.5rem; /* Relleno interno: 1.5rem en todos los lados */
-    margin-top: auto; /* Empuja el footer al final de la página (gracias a flexbox en body) */
+    background-color: #34495e; 
+    color: white; 
+    text-align: center; 
+    padding: 1.5rem; 
+    margin-top: auto; /* empujar el footer abajo ya que el flexbox del body lo permite */
 }
 
-/* Enlaces dentro del footer */
 footer a {
-    color: #3498db; /* Color del enlace: azul claro */
-    text-decoration: none; /* Elimina el subrayado del enlace */
+    color: #3498db; 
+    text-decoration: none;
 }
 
-/* DISEÑO ADAPTABLE - Estilos para tablets y pantallas grandes (768px o más) */
-@media (min-width: 768px) {
-    /* En pantallas grandes, el contenedor principal coloca items lado a lado */
-    .contenedor-principal {
-        flex-direction: row; /* Cambia de vertical a horizontal: menú lateral + contenido lado a lado */
+@media (min-width: 768px) { /* estilos para pantallas grandes (768px o más) */
+
+    .contenedor_principal { /* menú lateral + contenido horizontalmente*/
+        flex-direction: row; 
     }
     
-    /* En pantallas grandes, el menú lateral tiene ancho fijo */
-    aside {
-        width: 250px; /* Ancho fijo: 250 píxeles para el menú lateral */
+    aside { /* fijar ancho del menu lateral*/
+        width: 250px; 
     }
 }
 
-/* Botón de descarga - Estilos para la clase .btn-descarga */
-.btn-descarga {
-    display: inline-block; /* Se muestra como bloque pero respeta el flujo de texto */
-    background-color: #e74c3c; /* Color de fondo: rojo */
-    color: white; /* Color del texto: blanco */
-    padding: 10px 20px; /* Relleno: 10px arriba/abajo, 20px izquierda/derecha */
-    text-decoration: none; /* Elimina el subrayado del enlace */
-    border-radius: 5px; /* Esquinas redondeadas: 5 píxeles de radio */
-    margin-bottom: 2rem; /* Espaciado inferior: 2rem */
+.boton_descarga {
+    display: inline-block; /* para que respete el flujo de texto */
+    background-color: #e74c3c; 
+    color: white; 
+    padding: 10px 20px; 
+    text-decoration: none; 
+    border-radius: 5px; /* esquinas redondeadas */
+    margin-bottom: 2rem; 
+}
+
+
+/*COSAS DE EVENTOS:*/
+
+.ficha_evento { /*caja donde se muestra el evento */
+    background-color: #f9f9f9;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* sombra para que parezca que flota */
+}
+
+.titulo_evento {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 0.5rem;
+}
+
+.info_tecnica { /*caja donde se muestra horario, fecha... */
+    background-color: #ecf0f1;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border-left: 4px solid #e74c3c;
+}
+
+.info_tecnica p { /* separacion entre la información de horario, fecha... */
+    margin-bottom: 0.5rem;
+}
+
+.zona_inscripcion { /*para la zona del botón de inscripción*/
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.btn_principal { /* boton de inscripcion */
+    display: inline-block; /* para que sea como un bloque*/
+    background-color: #27ae60;
+    color: white;
+    padding: 15px 30px;
+    text-decoration: none; /*sin subrayado*/
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s ease; /*para que el cambio de color sea suave*/
+}
+ 
+.btn_principal:hover { /*pasar el raton por encima*/
+    background-color: #2ecc71;
+}
+
+
+
+/*COSAS DEL FORMULARIO DE CONTACTO*/
+
+.seccion_contacto { /*contenedor principal */
+    max-width: 800px;
+    margin: 0 auto; /*centrar el bloque*/
+}
+
+.developer_info { /*caja para información de los desarrolladores*/
+    background-color: #f4f7f6;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+}
+
+.developer_info ul {
+    list-style: none;
+    margin-top: 1rem;
+}
+
+.developer_info li {
+    margin-bottom: 0.5rem;
+    padding-left: 1rem;
+    border-left: 3px solid #3498db;
+}
+
+.separador { 
+    border: 0;
+    height: 1px;
+    background: #eee;
+    margin: 2rem 0;
+}
+
+.formulario_contacto .campo {
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.formulario_contacto label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #2c3e50;
+}
+
+.formulario_contacto input, 
+.formulario_contacto select, 
+.formulario_contacto textarea { /*para campos de texto, desplegable y area de texto*/
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    width: 100%;
+}
+
+.formulario_contacto input:focus, 
+.formulario_contacto textarea:focus { /*al hacer click en el campo de texto o area de texto*/
+    border-color: #3498db; 
+    outline: none; /*quitar recuadro negro*/
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.3); /*sombra alrededor*/
 }

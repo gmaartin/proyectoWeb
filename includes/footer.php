@@ -1,4 +1,4 @@
-</div> <!-- Cierra el .contenedor-principal -->
+</div> <!-- cierre del contenedor principal -->
     <footer>
         <p>&copy; 2026 Equipo de Tecnologías Web</p>
         <p>

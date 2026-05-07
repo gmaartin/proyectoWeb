@@ -6,7 +6,7 @@
     <p>Bienvenido al evento tecnológico del año. Consulta nuestros talleres y reserva tu plaza.</p>
     
     <!-- Enlace de descarga del programa general -->
-    <a href="pdf/programa_general.pdf" class="btn-descarga" download>Descargar Programa General</a>
+    <a href="pdf/programa_general.pdf" class="boton_descarga" download>Descargar Programa General</a>
 
     <section class="lista-eventos">
         <!-- Esto es "estático" por ahora, luego la Persona 3 lo rellenará con la base de datos -->
