@@ -43,8 +43,11 @@
                 </div>
             </nav>
         </header>
+
+        <!-- Espacio reservado para componentes de ancho completo (el banner del index) -->
+        @yield('banner')
         
-        <div class="contenedor-principal">
+        <div class="contenedor_principal">
             <aside>
                 <h2>Temáticas</h2>
                 <ul>
@@ -57,7 +60,7 @@
             <!-- AQUI SE INYECTARÁ EL CONTENIDO CENTRAL DE CADA PÁGINA -->
             @yield('contenido')
 
-        </div> <!-- Cierra el .contenedor-principal -->
+        </div> <!-- Cierra el .contenedor_principal -->
 
         <footer>
             <p>&copy; 2026 Equipo de Tecnologías Web</p>

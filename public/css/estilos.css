@@ -9,10 +9,15 @@ body {
     display: flex; /* flexbox activado */
     flex-direction: column; /* elementos apilados verticalmente */
     min-height: 100vh; /* ocupar como mínimo el 100% de la altura visible */
+    margin: 0; /* sin márgenes externos */
 }
 
 header {
     background-color: #2c3e50; 
+    background-image: url('../img/fondo_cabecera.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     color: white; 
     padding: 1rem 2rem; /* 1 rem de padding superior e inferior, 2rem a los lados */
     display: flex; 
@@ -34,7 +39,7 @@ header nav a { /* estilos de enlaces dentro del nav */
 
 .contenedor_principal {
     display: flex; 
-    flex: 1; /* ocupar todo el espacio entre header y footer */
+    flex-grow: 1; /* ocupar todo el espacio entre header y footer */
     flex-direction: column; /* elementos apilados verticalmente en pantallas pequeñas */
 }
 
@@ -42,6 +47,7 @@ aside { /* menu lateral */
     background-color: #ecf0f1; 
     padding: 1.5rem; 
     border-right: 1px solid #bdc3c7; /* línea gris en el borde derecho */
+    border-top: 1px solid #bdc3c7;
 }
 
 aside ul {
@@ -53,7 +59,7 @@ aside ul li { /* para los elementos de la lista*/
 }
 
 main {
-    flex: 1; /* ocupar todo el espacio disponible */
+    flex-grow: 1; /* ocupar todo el espacio disponible */
     padding: 2rem; 
     background-color: #ffffff; 
 }
@@ -202,4 +208,17 @@ footer a {
     border-color: #3498db; 
     outline: none; /*quitar recuadro negro*/
     box-shadow: 0 0 5px rgba(52, 152, 219, 0.3); /*sombra alrededor*/
+}
+
+/*COSAS DEL BANNER DE LA PAGINA PRINCIPAL*/
+/* --- ESTILOS DEL BANNER PRINCIPAL --- */
+.banner_index {
+    width: 100%;
+    margin-bottom: 2rem; 
+}
+
+.banner_index img {
+    width: 100%;
+    height: auto; /* mantener la proporcion de la imagen*/
+    display: block; /* quitar espacio de abajo */
 }

@@ -1,7 +1,14 @@
 <!-- 1. Le decimos que extienda de nuestra plantilla maestra -->
 @extends('layouts.app')
 
-<!-- 2. Definimos lo que va dentro de @yield('contenido') -->
+<!-- 2. Definimos lo que va dentro de @yield('banner') -->
+@section('banner')
+<div class="banner_index">
+    <img src="{{ asset('img/banner.png') }}" alt="TechConf - Agenda Global de Conferencias">
+</div>
+@endsection
+
+<!-- 3. Definimos lo que va dentro de @yield('contenido') -->
 @section('contenido')
 <main>
     <h2>Agenda de Conferencias</h2>
