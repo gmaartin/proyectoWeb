@@ -1,0 +1,224 @@
+* { /* reset básico */
+    box-sizing: border-box; /* para padding y border ya incluidos en cada ventana*/
+    margin: 0; /* sin márgenes externos por defecto */
+    padding: 0; /* sin relleno interno por defecto */
+}
+
+body {
+    font-family: Arial, sans-serif; /* arial. Si no, sans-serif*/
+    display: flex; /* flexbox activado */
+    flex-direction: column; /* elementos apilados verticalmente */
+    min-height: 100vh; /* ocupar como mínimo el 100% de la altura visible */
+    margin: 0; /* sin márgenes externos */
+}
+
+header {
+    background-color: #2c3e50; 
+    background-image: url('../img/fondo_cabecera.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white; 
+    padding: 1rem 2rem; /* 1 rem de padding superior e inferior, 2rem a los lados */
+    display: flex; 
+    justify-content: space-between; /* para que se quede el logo a la izqueirda y el menú a la derecha */
+    align-items: center; /* para que el menú y el logo esten centrados verticalmente */
+}
+
+header nav ul { /* estilos del menu */
+    list-style: none; /* sin puntos de viñeta */
+    display: flex; /* elementos en fila */
+    gap: 1.5rem; /* 1.5rem entre cada elemento */
+}
+
+header nav a { /* estilos de enlaces dentro del nav */
+    color: white; 
+    text-decoration: none; /* sin subrayado en los enlaces */
+    font-weight: bold; /* negrita */
+}
+
+.contenedor_principal {
+    display: flex; 
+    flex-grow: 1; /* ocupar todo el espacio entre header y footer */
+    flex-direction: column; /* elementos apilados verticalmente en pantallas pequeñas */
+}
+
+aside { /* menu lateral */
+    background-color: #ecf0f1; 
+    padding: 1.5rem; 
+    border-right: 1px solid #bdc3c7; /* línea gris en el borde derecho */
+    border-top: 1px solid #bdc3c7;
+}
+
+aside ul {
+    list-style: none; /* sin puntos de viñeta */
+}
+
+aside ul li { /* para los elementos de la lista*/
+    margin-bottom: 0.5rem; /* espacio inferior entre items del menú */
+}
+
+main {
+    flex-grow: 1; /* ocupar todo el espacio disponible */
+    padding: 2rem; 
+    background-color: #ffffff; 
+}
+
+footer {
+    background-color: #34495e; 
+    color: white; 
+    text-align: center; 
+    padding: 1.5rem; 
+    margin-top: auto; /* empujar el footer abajo ya que el flexbox del body lo permite */
+}
+
+footer a {
+    color: #3498db; 
+    text-decoration: none;
+}
+
+@media (min-width: 768px) { /* estilos para pantallas grandes (768px o más) */
+
+    .contenedor_principal { /* menú lateral + contenido horizontalmente*/
+        flex-direction: row; 
+    }
+    
+    aside { /* fijar ancho del menu lateral*/
+        width: 250px; 
+    }
+}
+
+.boton_descarga {
+    display: inline-block; /* para que respete el flujo de texto */
+    background-color: #e74c3c; 
+    color: white; 
+    padding: 10px 20px; 
+    text-decoration: none; 
+    border-radius: 5px; /* esquinas redondeadas */
+    margin-bottom: 2rem; 
+}
+
+
+/*COSAS DE EVENTOS:*/
+
+.ficha_evento { /*caja donde se muestra el evento */
+    background-color: #f9f9f9;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* sombra para que parezca que flota */
+}
+
+.titulo_evento {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 0.5rem;
+}
+
+.info_tecnica { /*caja donde se muestra horario, fecha... */
+    background-color: #ecf0f1;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border-left: 4px solid #e74c3c;
+}
+
+.info_tecnica p { /* separacion entre la información de horario, fecha... */
+    margin-bottom: 0.5rem;
+}
+
+.zona_inscripcion { /*para la zona del botón de inscripción*/
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.btn_principal { /* boton de inscripcion */
+    display: inline-block; /* para que sea como un bloque*/
+    background-color: #27ae60;
+    color: white;
+    padding: 15px 30px;
+    text-decoration: none; /*sin subrayado*/
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s ease; /*para que el cambio de color sea suave*/
+}
+ 
+.btn_principal:hover { /*pasar el raton por encima*/
+    background-color: #2ecc71;
+}
+
+
+
+/*COSAS DEL FORMULARIO DE CONTACTO*/
+
+.seccion_contacto { /*contenedor principal */
+    max-width: 800px;
+    margin: 0 auto; /*centrar el bloque*/
+}
+
+.developer_info { /*caja para información de los desarrolladores*/
+    background-color: #f4f7f6;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+}
+
+.developer_info ul {
+    list-style: none;
+    margin-top: 1rem;
+}
+
+.developer_info li {
+    margin-bottom: 0.5rem;
+    padding-left: 1rem;
+    border-left: 3px solid #3498db;
+}
+
+.separador { 
+    border: 0;
+    height: 1px;
+    background: #eee;
+    margin: 2rem 0;
+}
+
+.formulario_contacto .campo {
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.formulario_contacto label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #2c3e50;
+}
+
+.formulario_contacto input, 
+.formulario_contacto select, 
+.formulario_contacto textarea { /*para campos de texto, desplegable y area de texto*/
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    width: 100%;
+}
+
+.formulario_contacto input:focus, 
+.formulario_contacto textarea:focus { /*al hacer click en el campo de texto o area de texto*/
+    border-color: #3498db; 
+    outline: none; /*quitar recuadro negro*/
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.3); /*sombra alrededor*/
+}
+
+/*COSAS DEL BANNER DE LA PAGINA PRINCIPAL*/
+/* --- ESTILOS DEL BANNER PRINCIPAL --- */
+.banner_index {
+    width: 100%;
+    margin-bottom: 2rem; 
+}
+
+.banner_index img {
+    width: 100%;
+    height: auto; /* mantener la proporcion de la imagen*/
+    display: block; /* quitar espacio de abajo */
+}

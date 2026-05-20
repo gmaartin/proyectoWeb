@@ -1,13 +1,4 @@
 <?php include 'includes/header.php'; ?>
-
-</div> <!-- cierre del contenedor principal para imagen entre medias -->
-
-<div class="banner_index">
-    <img src="img/banner.png" alt="TechConf - Agenda Global de Conferencias">
-</div>
-
-<div class="contenedor_principal"> <!-- reapertura del contenedor principal para el contenido de la agenda -->
-
 <?php include 'includes/sidebar.php'; ?>
 
 <main>
@@ -18,6 +9,7 @@
     <a href="pdf/programa_general.pdf" class="boton_descarga" download>Descargar Programa General</a>
 
     <section class="lista-eventos">
+        <!-- Esto es "estático" por ahora, luego la Persona 3 lo rellenará con la base de datos -->
         <article class="evento-card" style="border: 1px solid #ccc; padding: 1rem; margin-bottom: 1rem;">
             <h3>Introducción a React y APIs</h3>
             <p><strong>Horario:</strong> 10:00 - 12:00 | <strong>Sala:</strong> Turing</p>
