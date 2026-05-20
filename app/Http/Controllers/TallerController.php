@@ -8,6 +8,41 @@ use Illuminate\Http\Request;
 
 class TallerController extends Controller
 {
+    /**
+     * Muestra la agenda global de talleres en la página de inicio.
+     */
+    public function index(\Illuminate\Http\Request $request)
+    {
+        // 1. Preparamos la consulta base (con el conteo para las plazas libres)
+        $query = Taller::withCount('inscripciones');
+
+        // 2. Si el usuario ha usado el buscador lateral, aplicamos el filtro
+        if ($request->has('buscar') && $request->buscar != '') {
+            $termino = $request->buscar;
+            $query->where('titulo', 'LIKE', '%' . $termino . '%')
+                ->orWhere('ponente', 'LIKE', '%' . $termino . '%');
+        }
+
+        // 3. Ejecutamos la consulta ordenando por fecha
+        $talleres = $query->orderBy('fecha', 'asc')
+                        ->orderBy('hora_inicio', 'asc')
+                        ->get();
+
+        return view('index', compact('talleres'));
+    }
+
+    /**
+     * Muestra los detalles de un taller específico.
+     */
+    public function show($id)
+    {
+        // Buscamos el taller o lanzamos un error 404 si el ID no es válido
+        $taller = Taller::findOrFail($id);
+
+        // Retornamos la vista de detalle pasando el objeto del taller
+        return view('detalle_taller', compact('taller'));
+    }
+
     private function comprobarOrganizador()
     {
         if (!auth()->check() || auth()->user()->rol !== 'organizador') {

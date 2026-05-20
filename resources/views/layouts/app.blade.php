@@ -49,12 +49,62 @@
         
         <div class="contenedor_principal">
             <aside>
-                <h2>Temáticas</h2>
-                <ul>
-                    <li><a href="#">Inteligencia Artificial</a></li>
-                    <li><a href="#">Desarrollo Web</a></li>
-                    <li><a href="#">Ciberseguridad</a></li>
-                </ul>
+                <div class="widget-lateral">
+                    <h3>🔍 Buscar Taller</h3>
+                    <form action="{{ route('agenda') }}" method="GET" style="display: flex; flex-direction: column; gap: 10px; margin-top: 1rem;">
+                        <input type="text" name="buscar" placeholder="Ej. Laravel, IA..." value="{{ request('buscar') }}" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                        <button type="submit" class="btn-buscador">Filtrar Agenda</button>
+                        
+                        <!-- Botón para limpiar la búsqueda si hay algo escrito -->
+                        @if(request()->has('buscar'))
+                            <a href="{{ route('agenda') }}" class="enlace-limpio">Limpiar filtro</a>
+                        @endif
+                    </form>
+                </div>
+
+                <div class="widget-lateral">
+                    @auth
+                        @if(Auth::user()->rol === 'asistente')
+                            <h3 class="borde-verde">👤 Mi Resumen</h3>
+                            <!-- Contamos las reservas activas en tiempo real -->
+                            @php
+                                $misReservas = \App\Models\Inscripcion::where('user_id', Auth::id())->count();
+                            @endphp
+                            <p>Tienes <strong>{{ $misReservas }}</strong> plazas reservadas actualmente.</p>
+                            <a href="{{ route('perfil.asistente') }}">Gestionar mis inscripciones &rarr;</a>
+                        
+                        @elseif(Auth::user()->rol === 'organizador')
+                            <h3 class="borde-rojo">⚙️ Administración</h3>
+                            <p>Modo de gestión activado.</p>
+                            <a href="{{ route('organizador.panel') }}">Ir al Panel de Control &rarr;</a>
+                        @endif
+                    @else
+                        <h3 class="borde-naranja">⚠️ ¿No tienes cuenta?</h3>
+                        <p>Inicia sesión para poder reservar tu plaza en las conferencias antes de que se agote el aforo.</p>
+                        <a href="{{ route('login') }}">Inicia Sesión Aquí &rarr;</a>
+                    @endauth
+                </div>
+
+                <div class="widget-lateral">
+                    <h3 class="borde-amarillo">📊 Cifras de TechConf</h3>
+                    
+                    <!-- Calculamos los totales al vuelo usando los modelos -->
+                    @php
+                        $totalTalleres = \App\Models\Taller::count();
+                        $totalInscripciones = \App\Models\Inscripcion::count();
+                    @endphp
+                    
+                    <div class="stats-container">
+                        <div>
+                            <span class="stat-numero">{{ $totalTalleres }}</span>
+                            <span class="stat-etiqueta">Talleres</span>
+                        </div>
+                        <div>
+                            <span class="stat-numero">{{ $totalInscripciones }}</span>
+                            <span class="stat-etiqueta">Inscritos</span>
+                        </div>
+                    </div>
+                </div>
             </aside>
 
             <!-- AQUI SE INYECTARÁ EL CONTENIDO CENTRAL DE CADA PÁGINA -->

@@ -13,9 +13,16 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
-        $asistente = User::create([
-            'name' => 'Asistente Demo',
-            'email' => 'asistente@techconf.com',
+        $asistente1 = User::create([
+            'name' => 'Asistente1 Demo',
+            'email' => 'asistente1@techconf.com',
+            'password' => Hash::make('12345678'),
+            'rol' => 'asistente',
+        ]);
+
+        $asistente2 = User::create([
+            'name' => 'Asistente2 Demo',
+            'email' => 'asistente2@techconf.com',
             'password' => Hash::make('12345678'),
             'rol' => 'asistente',
         ]);
@@ -72,7 +79,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Inscripcion::create([
-            'user_id' => $asistente->id,
+            'user_id' => $asistente1->id,
             'taller_id' => $tallerLaravel->id,
             'asistio' => false,
         ]);

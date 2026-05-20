@@ -18,28 +18,32 @@
     <a href="{{ asset('pdf/programa_general.pdf') }}" class="boton_descarga" download>Descargar Programa General</a>
 
     <section class="lista-eventos">
-        <!-- Esto es "estático" por ahora, luego la Persona 3 lo rellenará usando foreach de Blade -->
-        <article class="evento-card" style="border: 1px solid #ccc; padding: 1rem; margin-bottom: 1rem;">
-            <h3>Introducción a React y APIs</h3>
-            <p><strong>Horario:</strong> 10:00 - 12:00 | <strong>Sala:</strong> Turing</p>
-            <p>Aprende las bases del desarrollo web moderno con esta tecnología.</p>
-            <!-- URL adaptada al estilo Laravel -->
-            <a href="/evento/1">Ver detalles del taller</a>
-        </article>
-        
-        <article class="evento-card" style="border: 1px solid #ccc; padding: 1rem; margin-bottom: 1rem;">
-            <h3>Seguridad en Servidores Linux</h3>
-            <p><strong>Horario:</strong> 12:30 - 14:00 | <strong>Sala:</strong> Lovelace</p>
-            <p>Taller práctico sobre fortificación de servidores.</p>
-            <a href="/evento/2">Ver detalles del taller</a>
-        </article>
-
-        <article class="evento-card" style="border: 1px solid #ccc; padding: 1rem; margin-bottom: 1rem;">
-            <h3>Charla IoT definitiva</h3>
-            <p><strong>Horario:</strong> 16:00 - 18:00 | <strong>Sala:</strong> Salon Conferencias ETSIIT</p>
-            <p>Charla detallada sobre el Internet de las Cosas (IoT).</p>
-            <a href="/evento/3">Ver detalles del taller</a>
-        </article>
+        <!-- Iteración dinámica sobre la colección de talleres de la base de datos -->
+        @forelse($talleres as $taller)
+            <article class="evento-card" style="border: 1px solid #ccc; padding: 1rem; margin-bottom: 1rem;">
+                <h3>{{ $taller->titulo }}</h3>
+                
+                <p>
+                    <strong>Horario:</strong> 
+                    {{ \Carbon\Carbon::parse($taller->hora_inicio)->format('H:i') }} - 
+                    {{ \Carbon\Carbon::parse($taller->hora_fin)->format('H:i') }} 
+                    | <strong>Fecha:</strong> {{ \Carbon\Carbon::parse($taller->fecha)->format('d/m/Y') }}
+                    | <strong>Sala/Aula:</strong> {{ $taller->aula }}
+                </p>
+                
+                <p>{{ $taller->descripcion }}</p>
+                <p><strong>Ponente:</strong> {{ $taller->ponente }}</p>
+                <p><strong>Plazas disponibles:</strong> {{ $taller->aforo - $taller->inscripciones_count }} de {{ $taller->aforo }}</p>
+                
+                <!-- Enlace dinámico utilizando el ID único del registro -->
+                <a href="/evento/{{ $taller->id }}">Ver detalles del taller</a>
+            </article>
+        @empty
+            <!-- Bloque alternativo en caso de que no existan registros o la BD esté limpia -->
+            <div class="sin-eventos" style="padding: 2rem; text-align: center; background-color: #f9f9f9; border: 1px dashed #ccc;">
+                <p>Actualmente no hay talleres programados en la agenda. Por favor, vuelva a consultar más tarde.</p>
+            </div>
+        @endforelse
     </section>
 </main>
 @endsection

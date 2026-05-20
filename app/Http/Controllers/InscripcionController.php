@@ -2,62 +2,83 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Taller;
+use App\Models\Inscripcion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-/**
- * NOTA PARA DIEGO:
- * Se asume la existencia de los modelos 'Taller' y 'User' mapeados mediante Eloquent, 
- * así como una tabla pivote 'inscripciones' gestionada por relaciones N:M.
- */
-// use App\Models\Taller;
 
 class InscripcionController extends Controller
 {
+    /**
+     * Muestra el área privada del asistente con sus talleres inscritos.
+     */
     public function perfil()
     {
         $user = Auth::user();
         
-        /**
-         * NOTA PARA DIEGO:
-         * En el modelo 'User' se debe definir la relación muchos a muchos:
-         * public function talleres() { return $this->belongsToMany(Taller::class, 'inscripciones'); }
-         */
-        $misTalleres = []; // Temporal hasta BD: $user->talleres;
+        // Obtenemos las inscripciones del usuario actual cruzando los datos con la tabla talleres
+        $inscripciones = Inscripcion::with('taller')->where('user_id', $user->id)->get();
 
-        return view('perfil_asistente', compact('misTalleres'));
+        return view('perfil_asistente', compact('inscripciones', 'user'));
     }
 
+    /**
+     * Procesa la solicitud de inscripción aplicando las validaciones de negocio.
+     */
     public function inscribir(Request $request, $id)
     {
         $user = Auth::user();
         
-        /**
-         * LOGICA DE NEGOCIO SIMULADA:
-         * Simulamos la extracción del taller desde la base de datos (Operación de Diego).
-         * Reemplazar por: $taller = Taller::findOrFail($id);
-         */
-        $taller = new \stdClass();
-        $taller->id = $id;
-        $taller->titulo = "Taller Tecnológico de Prueba";
-        $taller->aforo_maximo = 30; // Cupo límite estipulado
+        // Buscamos el taller en la base de datos
+        $taller = Taller::findOrFail($id);
 
-        // 1. Cálculo de ocupación actual (Relación controlada por Diego)
-        // Reemplazar por conteo real en BD: $inscritosActuales = $taller->usuarios()->count();
-        $inscritosActuales = 30; // FORZADO A MÁXIMO PARA TESTEAR EL BLOQUEO AUTOMÁTICO
+        // 1. COMPROBACIÓN DE DUPLICIDAD: ¿El usuario ya está inscrito?
+        $yaInscrito = Inscripcion::where('user_id', $user->id)
+                                ->where('taller_id', $taller->id)
+                                ->exists();
 
-        // 2. VALIDACIÓN CLAVE: Bloqueo automático si se alcanza el cupo máximo
-        if ($inscritosActuales >= $taller->aforo_maximo) {
+        if ($yaInscrito) {
             return back()->withErrors([
-                'cupo_lleno' => "Operación denegada: El taller '{$taller->titulo}' ha alcanzado el límite máximo de plazas disponibles."
+                'duplicado' => "Ya tienes una plaza reservada para el taller '{$taller->titulo}'."
             ]);
         }
 
-        // 3. Comprobación de duplicidad (Evitar que se inscriba dos veces al mismo taller)
-        // Reemplazar por: if ($user->talleres()->where('taller_id', $id)->exists()) { ... }
+        // 2. COMPROBACIÓN DE AFORO: ¿El taller está lleno?
+        $ocupacionActual = Inscripcion::where('taller_id', $taller->id)->count();
 
-        // 4. Inserción del registro físico en la tabla pivote de inscripciones
-        // Reemplazar por: $user->talleres()->attach($id);
+        if ($ocupacionActual >= $taller->aforo) {
+            return back()->withErrors([
+                'cupo_lleno' => "Operación denegada: El taller '{$taller->titulo}' ha alcanzado el límite máximo de {$taller->aforo} plazas disponibles."
+            ]);
+        }
 
-        return redirect()->route('perfil.asistente')->with('success', 'Inscripción procesada correctamente.');
+        // 3. INSERCIÓN: Si pasa las comprobaciones, creamos el registro de inscripción
+        // Usamos la misma estructura que Diego preparó en su Seeder
+        Inscripcion::create([
+            'user_id' => $user->id,
+            'taller_id' => $taller->id,
+            'asistio' => false, // Valor por defecto
+        ]);
+
+        // Redirigimos al perfil del usuario con un mensaje de éxito
+        return redirect()->route('perfil.asistente')->with('success', '¡Inscripción procesada correctamente!');
+    }
+
+    /**
+     * Cancela una inscripción y libera la plaza.
+     */
+    public function cancelar($id)
+    {
+        $user = Auth::user();
+        
+        // Buscamos la inscripción asegurándonos de que es del usuario actual
+        $inscripcion = Inscripcion::where('id', $id)
+                                ->where('user_id', $user->id)
+                                ->firstOrFail();
+
+        // Eliminamos el registro de la base de datos
+        $inscripcion->delete();
+
+        return redirect()->route('perfil.asistente')->with('success', 'Tu inscripción ha sido cancelada y la plaza ha sido liberada.');
     }
 }
