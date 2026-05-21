@@ -9,6 +9,7 @@ use App\Http\Controllers\TallerController;
 use App\Http\Controllers\MaterialController;
 
 
+
 Route::get('/', [TallerController::class, 'index'])->name('agenda');
 Route::get('/contacto', function () { return view('contacto'); });
 
@@ -17,6 +18,9 @@ Route::post('/register', [AuthController::class, 'register'])->middleware('guest
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login')->middleware('guest');
 Route::post('/login', [AuthController::class, 'login'])->middleware('guest');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
+
+Route::get('/programa-general/pdf', [TallerController::class, 'programaPdf'])
+    ->name('programa.pdf');
 
 // Ruta para ver el detalle de un taller específico
 Route::get('/evento/{id}', [TallerController::class, 'show'])->name('taller.detalle');

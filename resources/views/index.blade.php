@@ -15,7 +15,9 @@
     <p>Bienvenido al evento tecnológico del año. Consulta nuestros talleres y reserva tu plaza.</p>
     
     <!-- Enlace de descarga del programa general apuntando a la carpeta public -->
-    <a href="{{ asset('pdf/programa_general.pdf') }}" class="boton_descarga" download>Descargar Programa General</a>
+    <a href="{{ route('programa.pdf') }}" class="boton_descarga">
+    Descargar Programa General
+</a>
 
     <section class="lista-eventos">
         <!-- Iteración dinámica sobre la colección de talleres de la base de datos -->
