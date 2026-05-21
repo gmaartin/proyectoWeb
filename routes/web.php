@@ -57,4 +57,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::post('/organizador/materiales', [MaterialController::class, 'store'])
         ->name('organizador.materiales.store');
+
+    Route::delete('/organizador/materiales/{material}', [MaterialController::class, 'destroy'])
+        ->name('organizador.materiales.eliminar');
 });
