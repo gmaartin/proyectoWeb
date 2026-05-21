@@ -22,6 +22,25 @@
             <p>{{ $taller->descripcion }}</p>
         </div>
 
+        <div class="materiales_evento">
+            <h3>Materiales de apoyo</h3>
+
+            @if($taller->materiales->isEmpty())
+                <p>No hay materiales disponibles para este taller.</p>
+            @else
+                <ul>
+                    @foreach($taller->materiales as $material)
+                        <li>
+                            <strong>{{ $material->titulo }}</strong> -
+                            <a href="{{ asset('storage/' . $material->archivo) }}" target="_blank">
+                                Descargar / Ver archivo
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
+            @endif
+        </div>
+
         <!-- LÓGICA DE INSCRIPCIÓN SEGÚN EL ESTADO DE LA SESIÓN -->
         @auth
             @if(Auth::user()->rol === 'asistente')

@@ -36,8 +36,8 @@ class TallerController extends Controller
      */
     public function show($id)
     {
-        // Buscamos el taller o lanzamos un error 404 si el ID no es válido
-        $taller = Taller::findOrFail($id);
+        // Buscamos el taller y cargamos también sus materiales asociados
+        $taller = Taller::with('materiales')->findOrFail($id);
 
         // Retornamos la vista de detalle pasando el objeto del taller
         return view('detalle_taller', compact('taller'));
