@@ -142,7 +142,7 @@ footer a {
     border-radius: 5px;
     transition: background-color 0.3s ease; /*para que el cambio de color sea suave*/
 }
- 
+
 .btn_principal:hover { /*pasar el raton por encima*/
     background-color: #2ecc71;
 }
@@ -350,3 +350,36 @@ footer a {
     font-size: 0.85rem;
     color: #7f8c8d;
 }
+
+/* ESTILOS PARA ENLACES DE LOGIN/REGISTRO */
+.texto-alternativo {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 0.9rem; /* Texto ligeramente más pequeño que el normal */
+    color: #555;       /* Gris oscuro para no robar atención al botón */
+}
+
+.texto-alternativo a {
+    color: #3498db;    /* Azul clásico de enlaces */
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.texto-alternativo a:hover {
+    color: #2980b9;    /* Azul más oscuro al pasar el ratón */
+    text-decoration: underline;
+}
+
+/* ESTILOS PARA LOGIN/REGISTRO */
+
+/* ESTILOS PARA PANEL ORGANIZADOR */
+
+/* ESTILOS PARA CREAR TALLER */
+
+/* ESTILOS PARA EDITAR TALLER */
+
+/* ESTILOS PARA INSCRITOS */
+
+/* ESTILOS PARA MATERIALES */
+

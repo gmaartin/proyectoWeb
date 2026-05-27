@@ -3,12 +3,17 @@
 @section('contenido')
 <main>
     <section class="contenedor-login">
-        <h2>Acceso a la Plataforma</h2>
-        
+        <h2>Registro en la Plataforma</h2>
+
         @include('alertas')
 
-        <form action="{{ route('login') }}" method="POST">
+        <form action="{{ route('register') }}" method="POST">
             @csrf
+            
+            <div class="campo-formulario">
+                <label for="name">Nombre:</label>
+                <input type="text" id="name" name="name" value="{{ old('name') }}" placeholder="Tu nombre completo" required>
+            </div>
             
             <div class="campo-formulario">
                 <label for="email">Correo Electrónico:</label>
@@ -19,12 +24,16 @@
                 <label for="password">Contraseña:</label>
                 <input type="password" id="password" name="password" required>
             </div>
+            <div class="campo-formulario">
+                <label for="password_confirmation">Confirmar Contraseña:</label>
+                <input type="password" id="password_confirmation" name="password_confirmation" required>
+            </div>
 
             <div class="zona-acciones">
-                <button type="submit" class="btn-enviar">Iniciar Sesión</button>
-
+                <button type="submit" class="btn-enviar">Registrarse</button>
+    
                 <div class="texto-alternativo">
-                    ¿No tienes cuenta aún? <a href="{{ route('register') }}">Registrate aquí</a>
+                    ¿Ya tienes una cuenta? <a href="{{ route('login') }}">Inicia sesión</a>
                 </div>
             </div>
         </form>

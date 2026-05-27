@@ -11,6 +11,11 @@
         <h3>Datos del Asistente</h3>
         <p><strong>Nombre:</strong> {{ $user->name }}</p>
         <p><strong>Email:</strong> {{ $user->email }}</p>
+        <p style="margin-top: 10px;">
+            <a href="{{ route('perfil.edit') }}" style="color: #3498db; font-weight: bold;">
+                ⚙️ Ajustes del Perfil
+            </a>
+        </p>
     </div>
 
     <h3>Mis Talleres Reservados</h3>
