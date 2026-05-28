@@ -15,6 +15,7 @@
             <li><a href="{{ route('organizador.inscritos') }}">Ver inscritos</a></li>
             <li><a href="{{ route('organizador.talleres.crear') }}">Crear nuevo taller</a></li>
             <li><a href="{{ route('organizador.materiales') }}">Gestionar materiales</a></li>
+            <li><a href="{{ route('organizador.propuestas') }}">Revisar propuestas</a></li>
         </ul>
     </nav>
 

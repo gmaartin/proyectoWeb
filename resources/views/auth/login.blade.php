@@ -4,16 +4,8 @@
 <main>
     <section class="contenedor-login">
         <h2>Acceso a la Plataforma</h2>
-
-        @if ($errors->any())
-            <div class="alert alert-danger" style="color: red; margin-bottom: 1rem;">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
+        
+        @include('alertas')
 
         <form method="POST" action="{{ route('login') }}" class="formulario-admin">
             @csrf
@@ -29,7 +21,13 @@
             </div>
 
             <div class="zona-acciones">
+
                 <button type="submit" class="btn_principal">Iniciar Sesión</button>
+
+                <div class="texto-alternativo">
+                    ¿No tienes cuenta aún? <a href="{{ route('register') }}">Registrate aquí</a>
+                </div>
+
             </div>
         </form>
     </section>

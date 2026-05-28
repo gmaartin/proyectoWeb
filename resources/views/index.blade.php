@@ -15,7 +15,17 @@
     <p>Bienvenido al evento tecnológico del año. Consulta nuestros talleres y reserva tu plaza.</p>
     
     <!-- Enlace de descarga del programa general apuntando a la carpeta public -->
-    <a href="{{ asset('pdf/programa_general.pdf') }}" class="boton_descarga" download>Descargar Programa General</a>
+    <a href="{{ route('programa.pdf') }}" class="boton_descarga">
+    Descargar Programa General
+</a>
+
+@auth
+    @if(Auth::user()->rol === 'asistente')
+        <a href="{{ route('propuestas.crear') }}" class="boton_descarga">
+            Proponer nuevo evento
+        </a>
+    @endif
+@endauth
 
     <section class="lista-eventos">
         <!-- Iteración dinámica sobre la colección de talleres de la base de datos -->

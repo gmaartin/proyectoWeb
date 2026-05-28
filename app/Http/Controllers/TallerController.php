@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Evento;
 use App\Models\Taller;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class TallerController extends Controller
 {
@@ -124,4 +125,17 @@ class TallerController extends Controller
             ->route('organizador.panel')
             ->with('success', 'Taller eliminado correctamente.');
     }
+
+public function programaPdf()
+{
+    $talleres = Taller::withCount('inscripciones')
+        ->orderBy('fecha', 'asc')
+        ->orderBy('hora_inicio', 'asc')
+        ->get();
+
+    $pdf = Pdf::loadView('pdf.programa_general', compact('talleres'));
+
+    return $pdf->download('programa_general_techconf.pdf');
+}
+
 }

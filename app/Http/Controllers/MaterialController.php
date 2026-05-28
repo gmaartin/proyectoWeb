@@ -52,4 +52,13 @@ class MaterialController extends Controller
             ->route('organizador.materiales')
             ->with('success', 'Material subido correctamente.');
     }
+
+    public function destroy(\App\Models\Material $material)
+    {
+        // Eliminamos el registro
+        $material->delete();
+
+        // Redirigimos a la misma página con un mensaje de éxito
+        return back()->with('success', 'El material ha sido eliminado correctamente del inventario.');
+    }
 }
