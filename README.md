@@ -1,3 +1,34 @@
+## Instalación y Configuración del Proyecto
+
+Para iniciar el proyecto desde cero, sigue estos pasos:
+
+1. **Instalar dependencias de Composer**
+   ```bash
+   composer install
+   ```
+
+2. **Configurar archivo de entorno**
+   ```bash
+   cp .env.example .env
+   ```
+
+3. **Generar clave de aplicación**
+   ```bash
+   php artisan key:generate
+   ```
+
+4. **Ejecutar migraciones y semillas**
+   ```bash
+   php artisan migrate --seed
+   ```
+
+5. **Crear enlace simbólico para almacenamiento**
+   ```bash
+   php artisan storage:link
+   ```
+
+Después de completar estos pasos, el proyecto estará listo para ser utilizado. Asegúrate de tener PHP 8.1 o superior y Composer instalados en tu sistema.
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">

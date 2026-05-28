@@ -98,6 +98,16 @@ footer a {
     margin-bottom: 2rem; 
 }
 
+.boton_proponer {
+    display: inline-block; /* para que respete el flujo de texto */
+    background-color: #3498db;  
+    color: white; 
+    padding: 10px 20px; 
+    text-decoration: none; 
+    border-radius: 5px; /* esquinas redondeadas */
+    margin-bottom: 2rem; 
+}
+
 
 /*COSAS DE EVENTOS:*/
 

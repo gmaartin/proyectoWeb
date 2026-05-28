@@ -14,19 +14,21 @@
     <h2>Agenda de Conferencias</h2>
     <p>Bienvenido al evento tecnológico del año. Consulta nuestros talleres y reserva tu plaza.</p>
     
-    <!-- Enlace de descarga del programa general apuntando a la carpeta public -->
-    <a href="{{ route('programa.pdf') }}" class="boton_descarga">
-    Descargar Programa General
-</a>
-
-@auth
-    @if(Auth::user()->rol === 'asistente')
-        <a href="{{ route('propuestas.crear') }}" class="boton_descarga">
-            Proponer nuevo evento
+    <div>
+        <!-- Enlace de descarga del programa general apuntando a la carpeta public -->
+        <a href="{{ route('programa.pdf') }}" class="boton_descarga">
+            Descargar Programa General
         </a>
-    @endif
-@endauth
 
+        @auth
+            @if(Auth::user()->rol === 'asistente')
+                <a href="{{ route('propuestas.crear') }}" class="boton_proponer">
+                    Proponer nuevo evento
+                </a>
+            @endif
+        @endauth
+    </div>
+    
     <section class="lista-eventos">
         <!-- Iteración dinámica sobre la colección de talleres de la base de datos -->
         @forelse($talleres as $taller)
