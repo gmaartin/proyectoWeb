@@ -92,6 +92,8 @@
                     Plazas disponibles:
                     {{ $taller->aforo - $taller->inscripciones_count }}
                 </p>
+                <p><strong>Materiales asociados:</strong></p>
+                    <p>{{ $taller->materiales_count }} documento/s disponibles</p>
             </div>
 
             <div class="descripcion">

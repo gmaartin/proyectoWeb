@@ -128,7 +128,7 @@ class TallerController extends Controller
 
 public function programaPdf()
 {
-    $talleres = Taller::withCount('inscripciones')
+    $talleres = Taller::withCount(['inscripciones','materiales'])
         ->orderBy('fecha', 'asc')
         ->orderBy('hora_inicio', 'asc')
         ->get();

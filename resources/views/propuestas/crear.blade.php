@@ -63,6 +63,7 @@
                 <input type="number" name="aforo" min="1" value="{{ old('aforo') }}" required>
             </p>
 
+            <br>
             <button type="submit" class="btn_principal">Enviar propuesta</button>
         </form>
     </section>
