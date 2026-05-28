@@ -6,7 +6,7 @@
         <h2 class="titulo_evento">Propuestas de eventos</h2>
 
         <p>
-            <a href="{{ route('organizador.panel') }}">Volver al panel</a>
+            <a href="{{ route('organizador.panel') }}" class="enlace-volver">Volver al panel</a>
         </p>
 
         @if(session('success'))
@@ -16,7 +16,7 @@
         @if($propuestas->isEmpty())
             <p>No hay propuestas registradas.</p>
         @else
-            <table>
+            <table class="tabla-datos">
                 <thead>
                     <tr>
                         <th>Usuario</th>
@@ -49,14 +49,14 @@
                                     <form method="POST" action="{{ route('organizador.propuestas.aceptar', $propuesta) }}" style="display:inline;">
                                         @csrf
                                         @method('PATCH')
-                                        <button type="submit">Aceptar</button>
+                                        <button type="submit" class="btn-accion btn-info">Aceptar</button>
                                     </form>
 
                                     <form method="POST" action="{{ route('organizador.propuestas.rechazar', $propuesta) }}" style="display:inline;">
                                         @csrf
                                         @method('PATCH')
                                         <input type="hidden" name="comentario_organizador" value="Propuesta rechazada por el organizador.">
-                                        <button type="submit">Rechazar</button>
+                                        <button type="submit" class="btn-accion btn-eliminar">Rechazar</button>
                                     </form>
                                 @else
                                     Sin acciones

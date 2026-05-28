@@ -20,50 +20,50 @@
             </div>
         @endif
 
-        <form method="POST" action="{{ route('propuestas.store') }}">
+        <form method="POST" action="{{ route('propuestas.store') }}" class="formulario-admin">
             @csrf
 
             <p>
-                <label>Título:</label><br>
+                <label>Título:</label>
                 <input type="text" name="titulo" value="{{ old('titulo') }}" required>
             </p>
 
             <p>
-                <label>Descripción:</label><br>
+                <label>Descripción:</label>
                 <textarea name="descripcion" required>{{ old('descripcion') }}</textarea>
             </p>
 
             <p>
-                <label>Ponente:</label><br>
+                <label>Ponente:</label>
                 <input type="text" name="ponente" value="{{ old('ponente') }}" required>
             </p>
 
             <p>
-                <label>Fecha:</label><br>
+                <label>Fecha:</label>
                 <input type="date" name="fecha" value="{{ old('fecha') }}" required>
             </p>
 
             <p>
-                <label>Hora inicio:</label><br>
+                <label>Hora inicio:</label>
                 <input type="time" name="hora_inicio" value="{{ old('hora_inicio') }}" required>
             </p>
 
             <p>
-                <label>Hora fin:</label><br>
+                <label>Hora fin:</label>
                 <input type="time" name="hora_fin" value="{{ old('hora_fin') }}" required>
             </p>
 
             <p>
-                <label>Aula:</label><br>
+                <label>Aula:</label>
                 <input type="text" name="aula" value="{{ old('aula') }}" required>
             </p>
 
             <p>
-                <label>Aforo:</label><br>
+                <label>Aforo:</label>
                 <input type="number" name="aforo" min="1" value="{{ old('aforo') }}" required>
             </p>
 
-            <br>
+            
             <button type="submit" class="btn_principal">Enviar propuesta</button>
         </form>
     </section>

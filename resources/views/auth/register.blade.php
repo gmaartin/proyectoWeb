@@ -7,7 +7,7 @@
 
         @include('alertas')
 
-        <form action="{{ route('register') }}" method="POST">
+        <form action="{{ route('register') }}" method="POST" class="formulario-admin">
             @csrf
             
             <div class="campo-formulario">
@@ -30,7 +30,7 @@
             </div>
 
             <div class="zona-acciones">
-                <button type="submit" class="btn-enviar">Registrarse</button>
+                <button type="submit" class="btn_principal">Registrarse</button>
     
                 <div class="texto-alternativo">
                     ¿Ya tienes una cuenta? <a href="{{ route('login') }}">Inicia sesión</a>

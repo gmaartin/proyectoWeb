@@ -3,7 +3,7 @@
 @section('contenido')
 <main class="container">
     <h2>Ajustes del Perfil</h2>
-    <p><a href="{{ route('perfil.asistente') }}">&larr; Volver a mi área personal</a></p>
+    <p><a href="{{ route('perfil.asistente') }}" class="enlace-volver">&larr; Volver a mi área personal</a></p>
 
     @include('alertas')
 
@@ -11,7 +11,7 @@
         <h3>Actualizar Información del Perfil</h3>
         <p>Actualiza la información de tu cuenta y la dirección de correo electrónico.</p>
 
-        <form method="POST" action="{{ route('perfil.update') }}">
+        <form method="POST" action="{{ route('perfil.update') }}" class="formulario-admin">
             @csrf
             @method('patch')
 
@@ -25,7 +25,7 @@
                 <input type="email" id="email" name="email" value="{{ old('email', $user->email) }}" required>
             </div>
 
-            <button type="submit" class="btn-enviar">Guardar Cambios</button>
+            <button type="submit" class="btn_principal">Guardar Cambios</button>
         </form>
     </div>
 
@@ -35,7 +35,7 @@
         <h3>Actualizar Contraseña</h3>
         <p>Asegúrate de que tu cuenta usa una contraseña larga y aleatoria para mantener la seguridad.</p>
 
-        <form method="POST" action="{{ route('perfil.password') }}">
+        <form method="POST" action="{{ route('perfil.password') }}" class="formulario-admin">
             @csrf
             @method('put')
 
@@ -54,26 +54,25 @@
                 <input type="password" id="password_confirmation" name="password_confirmation" required>
             </div>
 
-            <button type="submit" class="btn-enviar">Actualizar Contraseña</button>
+            <button type="submit" class="btn_principal">Actualizar Contraseña</button>
         </form>
     </div>
 
     <hr>
 
     <div class="perfil-seccion seccion-peligro">
-        <h3 style="color: #e74c3c;">Borrar Cuenta</h3>
+        <h3>Borrar Cuenta</h3>
         <p>Una vez que tu cuenta sea eliminada, todos sus recursos y datos serán borrados permanentemente.</p>
 
-        <form method="POST" action="{{ route('perfil.destroy') }}" onsubmit="return confirm('¿Estás absolutamente seguro de que deseas eliminar tu cuenta? Esta acción no se puede deshacer.');">
+        <form method="POST" action="{{ route('perfil.destroy') }}" class="formulario-admin" onsubmit="...">
             @csrf
             @method('delete')
-
-            <div class="campo-formulario">
+            
                 <label for="password_delete">Contraseña Actual para Confirmar:</label>
                 <input type="password" id="password_delete" name="password" required placeholder="Introduce tu contraseña">
-            </div>
+            
 
-            <button type="submit" class="btn-cancelar">Eliminar Cuenta Permanentemente</button>
+            <button type="submit" class="btn-accion btn-eliminar">Eliminar Cuenta Permanentemente</button>
         </form>
     </div>
 </main>

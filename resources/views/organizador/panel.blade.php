@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('contenido')
-<div class="container">
+<div class="ficha_evento">
     <h1>Panel del organizador</h1>
 
     @if(session('success'))

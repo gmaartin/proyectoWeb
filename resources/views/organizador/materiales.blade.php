@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('contenido')
-<div>
+<div class="ficha_evento">
     <h1>Materiales de apoyo</h1>
 
     <p><a href="{{ route('organizador.panel') }}" class="enlace-volver">Volver al panel</a></p>
