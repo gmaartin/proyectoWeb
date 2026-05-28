@@ -4,7 +4,7 @@
 <main>
     <section class="contenedor-login">
         <h2>Acceso a la Plataforma</h2>
-        
+
         @if ($errors->any())
             <div class="alert alert-danger" style="color: red; margin-bottom: 1rem;">
                 <ul>
@@ -15,9 +15,9 @@
             </div>
         @endif
 
-        <form action="{{ route('login') }}" method="POST">
+        <form method="POST" action="{{ route('login') }}" class="formulario-admin">
             @csrf
-            
+
             <div class="campo-formulario">
                 <label for="email">Correo Electrónico:</label>
                 <input type="email" id="email" name="email" value="{{ old('email') }}" placeholder="ejemplo@correo.ugr.es" required>
@@ -29,7 +29,7 @@
             </div>
 
             <div class="zona-acciones">
-                <button type="submit" class="btn-enviar">Iniciar Sesión</button>
+                <button type="submit" class="btn_principal">Iniciar Sesión</button>
             </div>
         </form>
     </section>

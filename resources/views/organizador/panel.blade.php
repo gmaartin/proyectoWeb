@@ -11,7 +11,7 @@
     <p>Desde este panel puedes gestionar los talleres, consultar inscritos y subir materiales de apoyo.</p>
 
     <nav>
-        <ul>
+        <ul class="menu-acciones-panel">
             <li><a href="{{ route('organizador.inscritos') }}">Ver inscritos</a></li>
             <li><a href="{{ route('organizador.talleres.crear') }}">Crear nuevo taller</a></li>
             <li><a href="{{ route('organizador.materiales') }}">Gestionar materiales</a></li>
@@ -23,7 +23,7 @@
     @if($talleres->isEmpty())
         <p>No hay talleres registrados.</p>
     @else
-        <table>
+        <table class="tabla-datos">
             <thead>
                 <tr>
                     <th>Título</th>
@@ -50,7 +50,7 @@
                         <td>{{ $taller->inscripciones_count }}</td>
                         <td>{{ $taller->aforo - $taller->inscripciones_count }}</td>
                         <td>
-                            <a href="{{ route('organizador.talleres.editar', $taller) }}">
+                            <a a href="{{ route('organizador.talleres.editar', $taller) }}" class="btn-accion btn-editar">
                                 Editar
                             </a>
 
@@ -58,7 +58,7 @@
                                 @csrf
                                 @method('DELETE')
 
-                                <button type="submit" onclick="return confirm('¿Seguro que quieres eliminar este taller?')">
+                                <button type="submit" class="btn-accion btn-eliminar" onclick="return confirm('¿Seguro que quieres eliminar este taller?')">
                                     Eliminar
                                 </button>
                             </form>

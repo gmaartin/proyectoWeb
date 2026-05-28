@@ -4,7 +4,7 @@
 <div class="container">
     <h1>Control de inscritos</h1>
 
-    <p><a href="{{ route('organizador.panel') }}">Volver al panel</a></p>
+    <p><a href="{{ route('organizador.panel') }}" class="enlace-volver">Volver al panel</a></p>
 
     @if(session('success'))
         <p>{{ session('success') }}</p>
@@ -13,7 +13,7 @@
     @if($inscripciones->isEmpty())
         <p>Todavía no hay inscripciones registradas.</p>
     @else
-        <table>
+        <table class="tabla-datos">
             <thead>
                 <tr>
                     <th>Asistente</th>
@@ -47,7 +47,7 @@
 
                                     <input type="hidden" name="asistio" value="0">
 
-                                    <button type="submit">Marcar como no asistió</button>
+                                    <button type="submit" class="btn-accion btn-eliminar">Marcar como no asistió</button>
                                 </form>
                             @else
                                 <form method="POST" action="{{ route('organizador.inscripciones.asistencia', $inscripcion) }}">
@@ -56,7 +56,7 @@
 
                                     <input type="hidden" name="asistio" value="1">
 
-                                    <button type="submit">Marcar como asistió</button>
+                                    <button type="submit" class="btn-accion btn-info">Marcar como asistió</button>
                                 </form>
                             @endif
                         </td>

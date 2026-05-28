@@ -4,14 +4,14 @@
 <div class="container">
     <h1>Materiales de apoyo</h1>
 
-    <p><a href="{{ route('organizador.panel') }}">Volver al panel</a></p>
+    <p><a href="{{ route('organizador.panel') }}" class="enlace-volver">Volver al panel</a></p>
 
     @if(session('success'))
         <p>{{ session('success') }}</p>
     @endif
 
     @if ($errors->any())
-        <div>
+        <div class="alerta-error">
             <strong>Hay errores en el formulario:</strong>
             <ul>
                 @foreach ($errors->all() as $error)
@@ -23,7 +23,7 @@
 
     <h2>Subir nuevo material</h2>
 
-    <form method="POST" action="{{ route('organizador.materiales.store') }}" enctype="multipart/form-data">
+    <form method="POST" action="{{ route('organizador.materiales.store') }}" enctype="multipart/form-data" class="formulario-admin">
         @csrf
 
         <label>Taller:</label>
@@ -36,19 +36,19 @@
             @endforeach
         </select>
 
-        <br>
+        
 
         <label>Título del material:</label>
         <input type="text" name="titulo" value="{{ old('titulo') }}" required>
 
-        <br>
+        
 
         <label>Archivo:</label>
         <input type="file" name="archivo" required>
 
-        <br><br>
+        
 
-        <button type="submit">Subir material</button>
+        <button type="submit" class="btn_principal">Subir material</button>
     </form>
 
     <h2>Materiales subidos</h2>
@@ -56,7 +56,7 @@
     @if($materiales->isEmpty())
         <p>No hay materiales subidos todavía.</p>
     @else
-        <table>
+        <table class="tabla-datos">
             <thead>
                 <tr>
                     <th>Título</th>
@@ -72,7 +72,7 @@
                         <td>{{ $material->titulo }}</td>
                         <td>{{ $material->taller->titulo }}</td>
                         <td>
-                            <a href="{{ asset('storage/' . $material->archivo) }}" target="_blank">
+                            <a href="{{ asset('storage/' . $material->archivo) }}" target="_blank" class="btn-accion btn-info">
                                 Descargar / Ver archivo
                             </a>
                         </td>

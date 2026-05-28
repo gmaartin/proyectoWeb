@@ -211,7 +211,6 @@ footer a {
 }
 
 /*COSAS DEL BANNER DE LA PAGINA PRINCIPAL*/
-/* --- ESTILOS DEL BANNER PRINCIPAL --- */
 .banner_index {
     width: 100%;
     margin-bottom: 2rem; 
@@ -349,4 +348,137 @@ footer a {
 .stat-etiqueta {
     font-size: 0.85rem;
     color: #7f8c8d;
+}
+
+
+/*ESTILOS PARA INICIO DE SESION, GESTION DEL ORGANIZADOR*/
+
+/* alertas y mensajes de error para el inicio de sesion */
+.alerta-error {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 1rem;
+    border: 1px solid #f5c6cb;
+    border-radius: 5px;
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+}
+
+/* formularios de login, crear taller, subir material) */
+.formulario-admin {
+    background-color: #f9f9f9;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    max-width: 600px;
+    margin-bottom: 2rem;
+}
+
+.formulario-admin label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #2c3e50;
+}
+
+.formulario-admin input[type="text"],
+.formulario-admin input[type="email"],
+.formulario-admin input[type="password"],
+.formulario-admin input[type="date"],
+.formulario-admin input[type="time"],
+.formulario-admin input[type="number"],
+.formulario-admin select,
+.formulario-admin textarea {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: inherit;
+}
+
+/* menú de botones del panel. en vez de ser una lista son botones */
+.menu-acciones-panel {
+    list-style: none;
+    display: flex;
+    margin-top: 1.5rem;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    padding: 0;
+}
+
+.menu-acciones-panel a {
+    background-color: #3498db;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.menu-acciones-panel a:hover {
+    background-color: #2980b9;
+}
+
+/* estilos de las tablas de las bases de datos */
+.tabla-datos {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2.5rem;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.tabla-datos th, 
+.tabla-datos td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.tabla-datos th {
+    background-color: #2c3e50;
+    color: white;
+    font-weight: bold;
+}
+
+.tabla-datos tbody tr:hover {
+    background-color: #f5f9ff; 
+}
+
+/* botones dentro de las tablas de las bases de datos */
+.btn-accion {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 4px;
+    text-decoration: none;
+    color: white;
+    font-size: 0.9rem;
+    margin-right: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-editar { background-color: #f39c12; }
+.btn-editar:hover { background-color: #d68910; }
+
+.btn-eliminar { background-color: #e74c3c; }
+.btn-eliminar:hover { background-color: #c0392b; }
+
+.btn-info { background-color: #3498db; }
+.btn-info:hover { background-color: #2980b9; }
+
+.enlace-volver {
+    display: inline-block;
+    margin-bottom: 1.5rem;
+    color: #7f8c8d;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.enlace-volver:hover {
+    color: #2c3e50;
+    text-decoration: underline;
 }
