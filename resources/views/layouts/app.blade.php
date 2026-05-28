@@ -116,7 +116,7 @@
             <p>&copy; 2026 Equipo de Tecnologías Web</p>
             <p>
                 <a href="/contacto">Contacto y Datos del Desarrollador</a> |
-                <a href="{{ asset('pdf/como_se_hizo.pdf') }}" target="_blank">Informe: Cómo se hizo (PDF)</a>
+                <a href="{{ asset('pdf/como_se_hizo.pdf') }}">Informe: Cómo se hizo (PDF)</a>
             </p>
         </footer>
     </body>
