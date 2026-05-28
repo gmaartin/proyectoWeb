@@ -19,6 +19,14 @@
     Descargar Programa General
 </a>
 
+@auth
+    @if(Auth::user()->rol === 'asistente')
+        <a href="{{ route('propuestas.crear') }}" class="boton_descarga">
+            Proponer nuevo evento
+        </a>
+    @endif
+@endauth
+
     <section class="lista-eventos">
         <!-- Iteración dinámica sobre la colección de talleres de la base de datos -->
         @forelse($talleres as $taller)

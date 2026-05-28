@@ -52,4 +52,12 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+
+    public function propuestasEventos()
+{
+    return $this->hasMany(PropuestaEvento::class);
+}
+
+
 }
